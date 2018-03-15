@@ -1,0 +1,372 @@
+//q11461v2.cpp - 2011/11/25
+//accepted at 
+//run time = 0.024
+#include <stdio.h>
+
+int cube[316];
+
+void build_cube(){
+	cube[0] = 1;
+	cube[1] = 4;
+	cube[2] = 9;
+	cube[3] = 16;
+	cube[4] = 25;
+	cube[5] = 36;
+	cube[6] = 49;
+	cube[7] = 64;
+	cube[8] = 81;
+	cube[9] = 100;
+	cube[10] = 121;
+	cube[11] = 144;
+	cube[12] = 169;
+	cube[13] = 196;
+	cube[14] = 225;
+	cube[15] = 256;
+	cube[16] = 289;
+	cube[17] = 324;
+	cube[18] = 361;
+	cube[19] = 400;
+	cube[20] = 441;
+	cube[21] = 484;
+	cube[22] = 529;
+	cube[23] = 576;
+	cube[24] = 625;
+	cube[25] = 676;
+	cube[26] = 729;
+	cube[27] = 784;
+	cube[28] = 841;
+	cube[29] = 900;
+	cube[30] = 961;
+	cube[31] = 1024;
+	cube[32] = 1089;
+	cube[33] = 1156;
+	cube[34] = 1225;
+	cube[35] = 1296;
+	cube[36] = 1369;
+	cube[37] = 1444;
+	cube[38] = 1521;
+	cube[39] = 1600;
+	cube[40] = 1681;
+	cube[41] = 1764;
+	cube[42] = 1849;
+	cube[43] = 1936;
+	cube[44] = 2025;
+	cube[45] = 2116;
+	cube[46] = 2209;
+	cube[47] = 2304;
+	cube[48] = 2401;
+	cube[49] = 2500;
+	cube[50] = 2601;
+	cube[51] = 2704;
+	cube[52] = 2809;
+	cube[53] = 2916;
+	cube[54] = 3025;
+	cube[55] = 3136;
+	cube[56] = 3249;
+	cube[57] = 3364;
+	cube[58] = 3481;
+	cube[59] = 3600;
+	cube[60] = 3721;
+	cube[61] = 3844;
+	cube[62] = 3969;
+	cube[63] = 4096;
+	cube[64] = 4225;
+	cube[65] = 4356;
+	cube[66] = 4489;
+	cube[67] = 4624;
+	cube[68] = 4761;
+	cube[69] = 4900;
+	cube[70] = 5041;
+	cube[71] = 5184;
+	cube[72] = 5329;
+	cube[73] = 5476;
+	cube[74] = 5625;
+	cube[75] = 5776;
+	cube[76] = 5929;
+	cube[77] = 6084;
+	cube[78] = 6241;
+	cube[79] = 6400;
+	cube[80] = 6561;
+	cube[81] = 6724;
+	cube[82] = 6889;
+	cube[83] = 7056;
+	cube[84] = 7225;
+	cube[85] = 7396;
+	cube[86] = 7569;
+	cube[87] = 7744;
+	cube[88] = 7921;
+	cube[89] = 8100;
+	cube[90] = 8281;
+	cube[91] = 8464;
+	cube[92] = 8649;
+	cube[93] = 8836;
+	cube[94] = 9025;
+	cube[95] = 9216;
+	cube[96] = 9409;
+	cube[97] = 9604;
+	cube[98] = 9801;
+	cube[99] = 10000;
+	cube[100] = 10201;
+	cube[101] = 10404;
+	cube[102] = 10609;
+	cube[103] = 10816;
+	cube[104] = 11025;
+	cube[105] = 11236;
+	cube[106] = 11449;
+	cube[107] = 11664;
+	cube[108] = 11881;
+	cube[109] = 12100;
+	cube[110] = 12321;
+	cube[111] = 12544;
+	cube[112] = 12769;
+	cube[113] = 12996;
+	cube[114] = 13225;
+	cube[115] = 13456;
+	cube[116] = 13689;
+	cube[117] = 13924;
+	cube[118] = 14161;
+	cube[119] = 14400;
+	cube[120] = 14641;
+	cube[121] = 14884;
+	cube[122] = 15129;
+	cube[123] = 15376;
+	cube[124] = 15625;
+	cube[125] = 15876;
+	cube[126] = 16129;
+	cube[127] = 16384;
+	cube[128] = 16641;
+	cube[129] = 16900;
+	cube[130] = 17161;
+	cube[131] = 17424;
+	cube[132] = 17689;
+	cube[133] = 17956;
+	cube[134] = 18225;
+	cube[135] = 18496;
+	cube[136] = 18769;
+	cube[137] = 19044;
+	cube[138] = 19321;
+	cube[139] = 19600;
+	cube[140] = 19881;
+	cube[141] = 20164;
+	cube[142] = 20449;
+	cube[143] = 20736;
+	cube[144] = 21025;
+	cube[145] = 21316;
+	cube[146] = 21609;
+	cube[147] = 21904;
+	cube[148] = 22201;
+	cube[149] = 22500;
+	cube[150] = 22801;
+	cube[151] = 23104;
+	cube[152] = 23409;
+	cube[153] = 23716;
+	cube[154] = 24025;
+	cube[155] = 24336;
+	cube[156] = 24649;
+	cube[157] = 24964;
+	cube[158] = 25281;
+	cube[159] = 25600;
+	cube[160] = 25921;
+	cube[161] = 26244;
+	cube[162] = 26569;
+	cube[163] = 26896;
+	cube[164] = 27225;
+	cube[165] = 27556;
+	cube[166] = 27889;
+	cube[167] = 28224;
+	cube[168] = 28561;
+	cube[169] = 28900;
+	cube[170] = 29241;
+	cube[171] = 29584;
+	cube[172] = 29929;
+	cube[173] = 30276;
+	cube[174] = 30625;
+	cube[175] = 30976;
+	cube[176] = 31329;
+	cube[177] = 31684;
+	cube[178] = 32041;
+	cube[179] = 32400;
+	cube[180] = 32761;
+	cube[181] = 33124;
+	cube[182] = 33489;
+	cube[183] = 33856;
+	cube[184] = 34225;
+	cube[185] = 34596;
+	cube[186] = 34969;
+	cube[187] = 35344;
+	cube[188] = 35721;
+	cube[189] = 36100;
+	cube[190] = 36481;
+	cube[191] = 36864;
+	cube[192] = 37249;
+	cube[193] = 37636;
+	cube[194] = 38025;
+	cube[195] = 38416;
+	cube[196] = 38809;
+	cube[197] = 39204;
+	cube[198] = 39601;
+	cube[199] = 40000;
+	cube[200] = 40401;
+	cube[201] = 40804;
+	cube[202] = 41209;
+	cube[203] = 41616;
+	cube[204] = 42025;
+	cube[205] = 42436;
+	cube[206] = 42849;
+	cube[207] = 43264;
+	cube[208] = 43681;
+	cube[209] = 44100;
+	cube[210] = 44521;
+	cube[211] = 44944;
+	cube[212] = 45369;
+	cube[213] = 45796;
+	cube[214] = 46225;
+	cube[215] = 46656;
+	cube[216] = 47089;
+	cube[217] = 47524;
+	cube[218] = 47961;
+	cube[219] = 48400;
+	cube[220] = 48841;
+	cube[221] = 49284;
+	cube[222] = 49729;
+	cube[223] = 50176;
+	cube[224] = 50625;
+	cube[225] = 51076;
+	cube[226] = 51529;
+	cube[227] = 51984;
+	cube[228] = 52441;
+	cube[229] = 52900;
+	cube[230] = 53361;
+	cube[231] = 53824;
+	cube[232] = 54289;
+	cube[233] = 54756;
+	cube[234] = 55225;
+	cube[235] = 55696;
+	cube[236] = 56169;
+	cube[237] = 56644;
+	cube[238] = 57121;
+	cube[239] = 57600;
+	cube[240] = 58081;
+	cube[241] = 58564;
+	cube[242] = 59049;
+	cube[243] = 59536;
+	cube[244] = 60025;
+	cube[245] = 60516;
+	cube[246] = 61009;
+	cube[247] = 61504;
+	cube[248] = 62001;
+	cube[249] = 62500;
+	cube[250] = 63001;
+	cube[251] = 63504;
+	cube[252] = 64009;
+	cube[253] = 64516;
+	cube[254] = 65025;
+	cube[255] = 65536;
+	cube[256] = 66049;
+	cube[257] = 66564;
+	cube[258] = 67081;
+	cube[259] = 67600;
+	cube[260] = 68121;
+	cube[261] = 68644;
+	cube[262] = 69169;
+	cube[263] = 69696;
+	cube[264] = 70225;
+	cube[265] = 70756;
+	cube[266] = 71289;
+	cube[267] = 71824;
+	cube[268] = 72361;
+	cube[269] = 72900;
+	cube[270] = 73441;
+	cube[271] = 73984;
+	cube[272] = 74529;
+	cube[273] = 75076;
+	cube[274] = 75625;
+	cube[275] = 76176;
+	cube[276] = 76729;
+	cube[277] = 77284;
+	cube[278] = 77841;
+	cube[279] = 78400;
+	cube[280] = 78961;
+	cube[281] = 79524;
+	cube[282] = 80089;
+	cube[283] = 80656;
+	cube[284] = 81225;
+	cube[285] = 81796;
+	cube[286] = 82369;
+	cube[287] = 82944;
+	cube[288] = 83521;
+	cube[289] = 84100;
+	cube[290] = 84681;
+	cube[291] = 85264;
+	cube[292] = 85849;
+	cube[293] = 86436;
+	cube[294] = 87025;
+	cube[295] = 87616;
+	cube[296] = 88209;
+	cube[297] = 88804;
+	cube[298] = 89401;
+	cube[299] = 90000;
+	cube[300] = 90601;
+	cube[301] = 91204;
+	cube[302] = 91809;
+	cube[303] = 92416;
+	cube[304] = 93025;
+	cube[305] = 93636;
+	cube[306] = 94249;
+	cube[307] = 94864;
+	cube[308] = 95481;
+	cube[309] = 96100;
+	cube[310] = 96721;
+	cube[311] = 97344;
+	cube[312] = 97969;
+	cube[313] = 98596;
+	cube[314] = 99225;
+	cube[315] = 99856;
+	return;
+}
+
+int binarySearch(int search){
+	int low = 0, high = 315, mid;
+	while(low <= high){
+		mid = (low+high)/2;
+		if(cube[mid] == search)
+			return mid;
+		else if(cube[mid] < search)
+			low = mid+1;
+		else if(cube[mid]>search)
+			high = mid-1;
+	}
+	return mid;
+}
+
+int look_up(int n, int search){
+	while( cube[n] < search )
+		n+=1;
+	return n;
+}
+
+int look_down(int n, int search){
+	while( cube[n] > search )
+		n-=1;
+	return n;
+}
+
+int find_interval(int A, int B){
+	return look_down(binarySearch(B),B) - look_up(binarySearch(A),A) +1;
+}
+
+int main(){
+	
+	#ifndef ONLINE_JUDGE
+	freopen("q11461.in", "r", stdin);
+	freopen("q11461.out", "w", stdout);
+	#endif
+
+	build_cube();
+	int inputA, inputB;
+	while(scanf("%d%d", &inputA, &inputB)!=EOF){
+		if(inputA + inputB == 0)	break;
+		printf("%d\n", find_interval(inputA,inputB));
+	}
+	return 0;
+}
